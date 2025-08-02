@@ -19,5 +19,5 @@ export async function POST({ request }) {
         input: messages,
     });
 
-	return json({reply: response.output_text, instructions});
+	return json({reply: response.output_text});
 }
