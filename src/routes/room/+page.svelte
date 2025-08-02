@@ -7,29 +7,25 @@
             id: 'child',
             name: 'The Child',
             img: '/images/child.png',
-            description: 'Doll in hand',
-            messages: []
+            description: 'Doll in hand'
         },
         {
             id: 'wife',
             name: 'The Weeping Woman',
             img: '/images/wife.png',
-            description: 'Seems to be the wife',
-            messages: []
+            description: 'Seems to be the wife'
         },
         {
             id: 'woman',
             name: 'Silent Woman',
             img: '/images/woman.png',
-            description: 'Unreadable',
-            messages: []
+            description: 'Unreadable'
         },
         {
             id: 'man',
             name: 'Man',
             img: '/images/irene.png',
-            description: 'Incoonspicuous, but...',
-            messages: []
+            description: 'Incoonspicuous, but...'
         }
     ];
 
@@ -105,6 +101,6 @@
 {#each chatbots as bot}
     <div class="chat-area" transition:fade hidden={!selectedBot || selectedBot.id !== bot.id}>
         <h2>Chatting with {bot.name}</h2>
-        <ChatArea/>
+        <ChatArea id={bot.id}/>
     </div>
 {/each}

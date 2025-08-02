@@ -1,23 +1,20 @@
 <script lang="ts">
-    let messages: { role: 'user' | 'assistant', content: string }[] = $state([])
+    let { id } = $props();
+    let messages: Messages = $state([])
     let input = $state('');
     let loading = $state(false);
 
     async function sendMessage() {
         if (!input.trim()) return;
         messages = [...messages, { role: 'user', content: input }];
-        const userInput = input;
         input = '';
         loading = true;
 
-        // Replace with your API endpoint
-        // const response = await fetch('/api/chat', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ message: userInput })
-        // });
-
-        const response = Response.json({reply: "hello world"});
+        const response = await fetch('/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({messages, id})
+        });
 
         if (response.ok) {
             const data = await response.json();
